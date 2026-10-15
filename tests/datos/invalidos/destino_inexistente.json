@@ -1,0 +1,29 @@
+{
+  "titulo": "Prueba",
+  "inicio": "A",
+  "variables": {
+    "x": false
+  },
+  "escenas": [
+    {
+      "id": "A",
+      "texto": "Escena A",
+      "final": false,
+      "opciones": [
+        {
+          "id": "o",
+          "texto": "Ir",
+          "destino": "E99",
+          "condiciones": {},
+          "efectos": {}
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "texto": "Escena B",
+      "final": true,
+      "opciones": []
+    }
+  ]
+}
