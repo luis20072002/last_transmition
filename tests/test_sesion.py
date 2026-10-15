@@ -135,3 +135,39 @@ def test_u6_deshacer_desde_un_final_regresa_a_e3(sesion, ruta, opcion_final, var
     assert sesion.deshacer() is True
     assert sesion.escena.id == "E3"
     assert sesion.variables == variables_previas
+
+# ---------- Bloqueo: escena no final sin opciones habilitadas (RF11) ----------
+def _historia_con_bloqueo():
+    """El archivo es válido, pero la única opción de 'pasillo' exige una variable que ya cambió."""
+    from transmision.dominio.modelos import Escena, Historia, Opcion
+
+    return Historia(
+        titulo="Bloqueo",
+        inicio="sala",
+        variables={"abierta": True},
+        escenas={
+            "sala": Escena("sala", "Sala.", False, (Opcion("cerrar", "Cerrar", "pasillo", {}, {"abierta": False}),)),
+            "pasillo": Escena("pasillo", "Pasillo.", False, (Opcion("salir", "Salir", "fin", {"abierta": True}, {}),)),
+            "fin": Escena("fin", "Fin.", True, ()),
+        },
+    )
+
+
+def test_bloqueo_se_informa_y_permite_reiniciar():
+    from transmision.interfaz.consola import ejecutar
+    from transmision.motor.sesion import Sesion
+
+    sesion = Sesion(_historia_con_bloqueo())
+    sesion.elegir("cerrar")
+    assert sesion.bloqueada is True
+    assert sesion.es_final is False
+    assert sesion.opciones_habilitadas == []
+
+    salida = []
+    entradas = iter(["1", "r", "s"])
+    ejecutar(sesion, leer=lambda _: next(entradas), escribir=salida.append)
+    texto = "\n".join(salida)
+    assert "la partida está bloqueada" in texto
+    assert "Partida reiniciada." in texto
+    assert sesion.escena.id == "sala"
+    assert sesion.variables == {"abierta": True}

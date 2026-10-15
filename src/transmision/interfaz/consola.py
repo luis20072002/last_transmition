@@ -24,7 +24,7 @@ def _mostrar(sesion: Sesion, escribir) -> None:
 
 
 def ejecutar(sesion: Sesion, leer=input, escribir=print) -> None:
-    escribir(f"--- {sesion._historia.titulo} ---")
+    escribir(f"--- {sesion.titulo} ---")
     while True:
         _mostrar(sesion, escribir)
         try:

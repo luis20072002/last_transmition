@@ -17,6 +17,10 @@ class Sesion:
 
     # ---- consulta ----
     @property
+    def titulo(self) -> str:
+        return self._historia.titulo
+
+    @property
     def escena(self) -> Escena:
         return self._historia.escenas[self._escena_id]
 

@@ -14,10 +14,10 @@
 | 7 | 2026-10-15 | `contenido/validador.py`, `contenido/cargador.py` | Validación de los 9 defectos de RF13 y mensajes de RF14 | Se usó el formato `Escena 'E2', opción 'investigar': ...` | [ ] Carga de la historia de referencia (6 escenas) y prueba con destino E99 |
 | 8 | 2026-10-15 | `motor/reglas.py`, `motor/sesion.py` | Evaluación de condiciones, efectos, sesión y deshacer de un nivel (RF20) | Se usó tal cual | [ ] Script de comprobación del ejemplo de la solicitud de cambio |
 | 9 | 2026-10-15 | `interfaz/consola.py`, `__main__.py` | Interfaz de consola con comandos `d`, `r`, `s` | Pendiente de revisar | [ ] Recorrer los tres finales y probar entradas inválidas |
+| 10 | 2026-10-15 | `README.md`, `evidencias/`, `docs/informe/cambio_hora6.md`, `docs/informe/borrador_unidades.md`, prueba de bloqueo, propiedad `Sesion.titulo` | Revisión del repositorio contra el enunciado y el anexo de la hora 6; README, evidencias de RNF01 y RNF03, análisis de impacto, matriz de trazabilidad y borradores de las unidades 3, 6 y 7 (Claude Code) | [ ] Pendiente de revisar y ajustar los borradores | [x] Suite completa (74 pruebas) y comandos del README ejecutados en PowerShell y Bash |
 
 ## Pendiente de registrar
-- Pruebas automatizadas (U1 a U6, I1, RNF), cuando se escriban.
-- Documentos de las unidades 3, 5, 6 y 7.
+- Diagramas de la Unidad 5 y de componentes (Lucidchart).
 
 ## Cómo verificamos
 - Ejecución local de cada módulo con scripts de comprobación.

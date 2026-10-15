@@ -1,0 +1,41 @@
+RNF01 - Modificabilidad del contenido
+Fecha: 2026-10-15 11:20
+Commit verificado: 6e031d5
+Metrica: 0 archivos de codigo modificados al cambiar de historia; 0 IDs E1 a E6 en el codigo del motor.
+
+== 1. Busqueda de IDs de la historia de referencia (E1 a E6) en src/ ==
+$ grep -rnwE "E[1-6]" src --include=*.py
+(sin coincidencias: 0 IDs)
+
+== 2. Estado del codigo antes de cargar la segunda historia ==
+$ git diff --stat -- src
+(vacio)
+
+== 3. Carga y recorrido de la segunda historia con el mismo motor ==
+$ PYTHONPATH=src python -m transmision historias/historia2.json   (entradas: 1, 1, s)
+--- El faro sin luz ---
+
+Una tormenta obliga a la guardacostas a refugiarse en un faro apagado. Sobre una mesa hay una llave oxidada y, al fondo, una puerta metálica que baja al sótano.
+  1. Tomar la llave
+  2. Ir directo a la puerta
+[r = reiniciar | s = salir]
+> 
+La puerta del sótano está cerrada con un candado viejo. Desde abajo se escucha un zumbido eléctrico.
+  1. Abrir el candado con la llave
+[d = deshacer | r = reiniciar | s = salir]
+> 
+El candado cede. En el sótano, la guardacostas reactiva el generador y la luz del faro vuelve a guiar a los barcos durante la tormenta.
+
+=== FIN DE LA PARTIDA ===
+[d = deshacer | r = reiniciar | s = salir]
+> Hasta pronto.
+
+== 4. Estado del codigo despues de jugar la segunda historia ==
+$ git diff --stat -- src
+(vacio)
+
+== 5. Pruebas automatizadas de RNF01 ==
+...                                                                      [100%]
+3 passed, 32 deselected in 0.10s
+
+Resultado: 0 archivos de codigo modificados, 0 IDs E1 a E6 en src/. RNF01 CUMPLE.
