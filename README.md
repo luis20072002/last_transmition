@@ -9,6 +9,10 @@ Parcial práctico de Ingeniería de Software, Universidad Tecnológica de Bolív
 
 Motor de consola que carga historias desde archivos JSON, muestra solo las opciones cuyas condiciones se cumplen, aplica sus efectos sobre variables booleanas, detecta errores del contenido antes de jugar y permite deshacer la última decisión.
 
+## Video de demostración
+
+https://youtu.be/0zrbxGzc0fI
+
 ## Versiones requeridas
 
 | Herramienta | Versión |
