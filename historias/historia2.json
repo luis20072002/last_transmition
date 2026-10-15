@@ -1,0 +1,69 @@
+{
+  "titulo": "El faro sin luz",
+  "inicio": "entrada",
+  "variables": {
+    "tiene_llave": false
+  },
+  "escenas": [
+    {
+      "id": "entrada",
+      "texto": "Una tormenta obliga a la guardacostas a refugiarse en un faro apagado. Sobre una mesa hay una llave oxidada y, al fondo, una puerta metálica que baja al sótano.",
+      "final": false,
+      "opciones": [
+        {
+          "id": "tomar_llave",
+          "texto": "Tomar la llave",
+          "destino": "puerta",
+          "condiciones": {},
+          "efectos": {
+            "tiene_llave": true
+          }
+        },
+        {
+          "id": "ir_sin_llave",
+          "texto": "Ir directo a la puerta",
+          "destino": "puerta",
+          "condiciones": {},
+          "efectos": {}
+        }
+      ]
+    },
+    {
+      "id": "puerta",
+      "texto": "La puerta del sótano está cerrada con un candado viejo. Desde abajo se escucha un zumbido eléctrico.",
+      "final": false,
+      "opciones": [
+        {
+          "id": "abrir_con_llave",
+          "texto": "Abrir el candado con la llave",
+          "destino": "luz_encendida",
+          "condiciones": {
+            "tiene_llave": true
+          },
+          "efectos": {}
+        },
+        {
+          "id": "forzar_puerta",
+          "texto": "Forzar la puerta a golpes",
+          "destino": "oscuridad",
+          "condiciones": {
+            "tiene_llave": false
+          },
+          "efectos": {}
+        }
+      ]
+    },
+    {
+      "id": "luz_encendida",
+      "texto": "El candado cede. En el sótano, la guardacostas reactiva el generador y la luz del faro vuelve a guiar a los barcos durante la tormenta.",
+      "final": true,
+      "opciones": []
+    },
+    {
+      "id": "oscuridad",
+      "texto": "La puerta se astilla, pero el golpe hace saltar los cables del generador. El faro queda a oscuras hasta el amanecer.",
+      "final": true,
+      "opciones": []
+    }
+  ]
+}
