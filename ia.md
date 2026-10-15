@@ -17,7 +17,7 @@
 | 10 | 2026-10-15 | `README.md`, `evidencias/`, `docs/informe/cambio_hora6.md`, `docs/informe/borrador_unidades.md`, prueba de bloqueo, propiedad `Sesion.titulo` | Revisión del repositorio contra el enunciado y el anexo de la hora 6; README, evidencias de RNF01 y RNF03, análisis de impacto, matriz de trazabilidad y borradores de las unidades 3, 6 y 7 (Claude Code) | [ ] Pendiente de revisar y ajustar los borradores | [x] Suite completa (74 pruebas) y comandos del README ejecutados en PowerShell y Bash |
 
 ## Pendiente de registrar
-- Diagramas de la Unidad 5 y de componentes (Lucidchart).
+- Diagramas D1 a D6 hechos en Lucidchart con Claude Code (ver `docs/anexo/diagramas.md`); pendiente revisarlos contra el informe final.
 
 ## Cómo verificamos
 - Ejecución local de cada módulo con scripts de comprobación.

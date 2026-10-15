@@ -49,7 +49,7 @@ Una tarjeta pasa a Done solo si:
 
 ## Unidad 6: arquitectura
 
-Diagrama de componentes: anexo, D6.
+Diagrama de componentes: anexo, D6 (`docs/anexo/diagramas/D6_componentes.png`).
 
 ### Responsabilidades
 
