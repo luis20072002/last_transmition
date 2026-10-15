@@ -54,6 +54,22 @@ PYTHONPATH=src python -m transmision historias/la_ultima_transmision.json
 
 Si no se indica archivo, se carga `historias/la_ultima_transmision.json`. Para jugar la segunda historia con el mismo motor:
 
+**Windows (PowerShell)**
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m transmision historias/historia2.json
+```
+
+**Windows (cmd)**
+
+```bat
+set PYTHONPATH=src
+python -m transmision historias/historia2.json
+```
+
+**Linux / macOS / Git Bash**
+
 ```bash
 PYTHONPATH=src python -m transmision historias/historia2.json
 ```
@@ -102,14 +118,71 @@ Cómo una condición cambia las opciones: en E3, si se investigó el archivo apa
 
 Deshacer (solicitud de cambio de la hora 6): `1`, `1`, `d` vuelve a E2 con `conoce_origen` en falso; un segundo `d` no cambia nada; luego `2` (continuar sin investigar) muestra en E3 "Activar sin verificar" y "Cortar comunicación". Desde cualquier final, `d` regresa a E3.
 
-Segunda historia (`historias/historia2.json`, "El faro sin luz"):
+Capturas de los tres recorridos en consola: `docs/finales/historia/111.png` (E4), `121.png` (E5) y `112.png` (E6).
+
+## Segunda historia: "El faro sin luz"
+
+Archivo `historias/historia2.json`. Demuestra que el motor carga y juega otra historia sin modificar código (RNF01): usa IDs de escena distintos a E1–E6, otra variable y su propia condición y efecto.
+
+Una tormenta obliga a una guardacostas a refugiarse en un faro apagado; según tome o no la llave, podrá encender el faro o lo dejará a oscuras.
+
+| Escena | Tipo | Opciones (condición → efecto) |
+|---|---|---|
+| `entrada` | Inicio | "Tomar la llave" (sin condición → `tiene_llave` = verdadero) y "Ir directo a la puerta" (sin condición, sin efecto); ambas llevan a `puerta` |
+| `puerta` | Decisión | "Abrir el candado con la llave" solo si `tiene_llave` = verdadero → `luz_encendida`; "Forzar la puerta a golpes" solo si `tiene_llave` = falso → `oscuridad` |
+| `luz_encendida` | Final | El faro vuelve a guiar a los barcos |
+| `oscuridad` | Final | El faro queda a oscuras hasta el amanecer |
+
+Estado inicial: escena `entrada`, `tiene_llave` = falso. En `puerta` siempre se ve una sola opción, la que corresponde a lo que hizo el lector antes.
+
+**Windows (PowerShell)**
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m transmision historias/historia2.json
+```
+
+**Windows (cmd)**
+
+```bat
+set PYTHONPATH=src
+python -m transmision historias/historia2.json
+```
+
+**Linux / macOS / Git Bash**
+
+```bash
+PYTHONPATH=src python -m transmision historias/historia2.json
+```
 
 | Final | Entradas |
 |---|---|
 | Luz encendida | `1`, `1` (tomar la llave, abrir el candado) |
 | Oscuridad | `2`, `1` (ir sin llave, forzar la puerta) |
 
-Error de contenido (destino inexistente E99):
+Deshacer también funciona aquí: `1`, `d` vuelve a `entrada` con `tiene_llave` en falso.
+
+Verificación: `tests/test_integracion.py::test_i1_segunda_historia_funciona_sin_tocar_el_motor`, `tests/test_rnf.py::test_rnf01_segunda_historia_carga_con_el_mismo_motor` y `evidencias/rnf01.txt`.
+
+## Error de contenido
+
+Archivo con un destino inexistente (E99):
+
+**Windows (PowerShell)**
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m transmision tests/datos/invalidos/destino_inexistente.json
+```
+
+**Windows (cmd)**
+
+```bat
+set PYTHONPATH=src
+python -m transmision tests/datos/invalidos/destino_inexistente.json
+```
+
+**Linux / macOS / Git Bash**
 
 ```bash
 PYTHONPATH=src python -m transmision tests/datos/invalidos/destino_inexistente.json
